@@ -7,8 +7,8 @@
 # 
 ##############################################################################
 
-require "config.inc";
-require "parse.inc";
+require "./config.inc";
+require "./parse.inc";
 
 $user_id=$formdata{'user_id'};
 
@@ -141,7 +141,7 @@ while (<MYEXE>){
 
         $path="$run_dir/$cuid/$case_id/mendel.in";
 
-        require "input_file_parser.inc";
+        require "./input_file_parser.inc";
         #print "path: $path<br>";
         #print "case_id: $case_id<br>";
         #print "num_gen: $num_generations<br>";

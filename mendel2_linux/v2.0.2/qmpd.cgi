@@ -8,7 +8,7 @@
 #
 ##############################################################################
 
-require "parse.inc";
+require "./parse.inc";
 
 $action=$formdata{'action'};
 $selected_nodes=$formdata{'selected_nodes'};

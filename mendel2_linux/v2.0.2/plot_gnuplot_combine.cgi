@@ -29,7 +29,7 @@ if ($case_id ne "") {
 }
 
     print <<zZzZz;
-        <form name="combine_plots" method="post" action="plot_gnuplot_recipes.cgi">
+        <form name="combine_plots" method="post" action="./plot_gnuplot_recipes.cgi">
         <table>
 
         <tr>

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 $case_id=$formdata{'case_id'};
 $user_id=$formdata{'user_id'};
@@ -116,7 +116,7 @@ print <<END_HTML;
    <center> <h4>Number of generations</h4> </center>
 
    <center>
-   <form name="mutn_form" method="post" action="more.cgi">
+   <form name="mutn_form" method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hst">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -183,7 +183,7 @@ print <<END_HTML;
    <center> <h4>Number of generations</h4> </center>
 
    <center>
-   <form name="fit_form" method="post" action="more.cgi">
+   <form name="fit_form" method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hst">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -199,7 +199,7 @@ END_HTML
 # For some reason, the input_file_parser does not work correctly 
 # when fitness_distrib_type = 0
 $path = "$run_dir/$user_id/$case_id/mendel.in";
-#require "input_file_parser.inc";
+#require "./input_file_parser.inc";
 
 # Only plot mutation and fitness plots for equal effect mutation distribution
 # This is not working right now... parsing the input file is failing,
@@ -209,7 +209,7 @@ $path = "$run_dir/$user_id/$case_id/mendel.in";
 #} else {
 print <<END_HTML;
 <center>
-<form method="post" action="plot_gnuplot.cgi">
+<form method="post" action="./plot_gnuplot.cgi">
 <input type="hidden" name="case_id" value="$case_id">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="user_id" value="$user_id">
@@ -266,7 +266,7 @@ print <<END_HTML;
    <center> <h4> Mutational Fitness Degradation</h4> </center>
 
    <center>
-   <form name="dst_form" method="post" action="more.cgi">
+   <form name="dst_form" method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.dst">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -354,7 +354,7 @@ print <<END_HTML;
    <center> <h4>Number of Generations</h4> </center>
 
    <center>
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.thr">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -429,7 +429,7 @@ print <<END_HTML;
    <center><h4>Fitness Effect</h4></center>
 
    <center>
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hap">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -546,7 +546,7 @@ print <<END_HTML;
    <center><h4>Fitness Effect</h4></center>
 
    <center>
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hap">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -626,7 +626,7 @@ print <<END_HTML;
    <center><h4>Fitness</h4></center>
 
    <center>
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.sel">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -703,7 +703,7 @@ print <<END_HTML;
    <center><h4>Allele Frequency</h4></center>
 
    <center>
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.plm">
    <input type="hidden" name="run_dir" value="$run_dir">

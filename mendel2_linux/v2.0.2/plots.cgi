@@ -9,7 +9,7 @@
 #
 ##############################################################################
 
-require "parse.inc";
+require "./parse.inc";
 
 # if posting from control panel 
 if ($case_id eq "") {
@@ -27,7 +27,7 @@ if ($case_id eq "") {
    }
 }
 
-require "config.inc";
+require "./config.inc";
 
 $selected_cases=$formdata{'selected_cases'};
 $program=$formdata{'program'};
@@ -36,12 +36,12 @@ $program=$formdata{'program'};
 #print "program is $program";
 
 if($program eq "gnuplot") {
-   require "plot_gnuplot.cgi";
+   require "./plot_gnuplot.cgi";
 } elsif($program eq "flot") {
-   require "plot_flot.cgi";
+   require "./plot_flot.cgi";
 } elsif($program eq "jqplot") {
-   require "plot_jqplot.cgi";
+   require "./plot_jqplot.cgi";
 } else {
-   require "plot_flot.cgi";
+   require "./plot_flot.cgi";
 }
 

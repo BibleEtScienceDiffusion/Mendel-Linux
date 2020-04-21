@@ -3,7 +3,7 @@
 # start.cgi -> this_file -> ...
 ##############################################################################
 
-require "config.inc";
+require "./config.inc";
 
 read(STDIN, $buffer,$ENV{'CONTENT_LENGTH'});
 

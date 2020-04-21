@@ -1,8 +1,9 @@
 #FC = /opt/intel/fc/10.0.026/bin/ifort -vec-report0
-FC = /opt/intel/bin/ifort
+#FC = /opt/intel/bin/ifort
 #FC = /opt/pgi/linux86-64/8.0-4/bin/pgf90 # c101
 #FC = /usr/local/bin/mpif90
 #FC = gfortran
+FC = mpifort
 
 # Following are needed for building parallel version
 # Comment out if compiling with mpif90

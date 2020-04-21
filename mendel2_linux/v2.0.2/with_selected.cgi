@@ -10,7 +10,7 @@
 ##############################################################################
 
 ## following line doesn't work for this file for some reason
-#require "parse.inc";
+#require "./parse.inc";
 
 read(STDIN, $buffer,$ENV{'CONTENT_LENGTH'});
 $buffer =~ tr/+/ /;
@@ -194,32 +194,32 @@ zZzZz
         refresh(60);
 
    } elsif ($action eq "plot") {
-     if ($#cases > 0) { require "plot_gnuplot_combine.cgi"; }
-     require "plot_gnuplot.cgi";
+     if ($#cases > 0) { require "./plot_gnuplot_combine.cgi"; }
+     require "./plot_gnuplot.cgi";
 
    } elsif ($action eq "diff") {
-     require "diff.cgi";
+     require "./diff.cgi";
 
    } elsif ($action eq "input") {
      $file_name = "mendel.in";
-     require "more.cgi";
+     require "./more.cgi";
 
    } elsif ($action eq "output") {
      $case_id = $cases[0];
      $is_output = 1;
-     require "more.cgi";
+     require "./more.cgi";
 
    } elsif ($action eq "start") {
      $case_id = $cases[0];
-     require "start.cgi";
+     require "./start.cgi";
  
    } elsif ($action eq "load") {
      $case_id = $cases[0];
-     require "load.cgi";
+     require "./load.cgi";
  
    } elsif ($action eq "more") {
      $case_id = $cases[0];
-     require "more.cgi";
+     require "./more.cgi";
 
    } elsif ($action eq "lock") {
      for ( $i = 0; $i <= $#cases; $i++ ) {
@@ -237,16 +237,16 @@ zZzZz
 
    } elsif ($action eq "list_files") {
      $case_id = $cases[0];
-     require "list_files.cgi";
+     require "./list_files.cgi";
 
    } elsif ($action eq "filter") {
      if ($filter ne "keyword") {
         $filter=$options;
      }
-     require "list_cases.cgi";
+     require "./list_cases.cgi";
 
    } elsif ($action eq "report") {
-       require "label_form.cgi";
+       require "./label_form.cgi";
 
    } elsif ($action eq "tarball") {
      chdir $run_dir;

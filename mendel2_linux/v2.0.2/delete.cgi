@@ -9,7 +9,7 @@
 #
 ##############################################################################
 
-#require "parse.inc";
+#require "./parse.inc";
 
 read(STDIN, $buffer,$ENV{'CONTENT_LENGTH'});
 $buffer =~ tr/+/ /;
@@ -25,7 +25,7 @@ foreach $pair(@pairs){
   $formdata{$key}.="$value";
 }
 
-require "config.inc";
+require "./config.inc";
 if ($os eq "windows") {
    $slash="\\";
    $rmdir="rmdir/s/q";

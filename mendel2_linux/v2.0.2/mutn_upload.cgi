@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-require "parse.inc";
+require "./parse.inc";
 
 print "Content-type:text/html\n\n";
 #$run_dir=$formdata{'run_dir'};
@@ -68,7 +68,7 @@ table caption {
 </table>
 
 
-   <form name="upload_mutations_form" method=post action="mutn_parse_write.cgi">
+   <form name="upload_mutations_form" method=post action="./mutn_parse_write.cgi">
       <textarea name="mutn_table" rows="15" cols="55"></textarea><BR><BR>
       <input type="hidden" name="run_dir" value="$run_dir">
       <input type="hidden" name="user_id" value="$user_id">

@@ -8,8 +8,8 @@
 #
 ##############################################################################
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 if ($os eq "windows") {
    print "Content-type:text/html\n\n";

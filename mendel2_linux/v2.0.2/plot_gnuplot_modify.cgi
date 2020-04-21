@@ -8,8 +8,8 @@
 #
 ##############################################################################
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 $file_name=$formdata{'file_name'};
 $case_id=$formdata{'cid'};
@@ -40,7 +40,7 @@ $run_dir =~ s/%2F/\//g;
 
 $cid = $case_id;
 $path="$run_dir/$user_id/$case_id/mendel.in";
-require "input_file_parser.inc";
+require "./input_file_parser.inc";
 
 if($plot_avg_data) { $checkpad = "CHECKED" }
 
@@ -64,7 +64,7 @@ while (<FH>) {
 close FH;
 
 print <<zZzZz;
-<form method="post" action="plot_gnuplot_recipes.cgi">
+<form method="post" action="./plot_gnuplot_recipes.cgi">
    <table>
 
      <tr>

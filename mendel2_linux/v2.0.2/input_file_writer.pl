@@ -26,7 +26,7 @@ foreach $pair(@pairs){
   $formdata{$key}.="$value";
 }
 
-require "config.inc";
+require "./config.inc";
 
 #######################################################################
 # Assign parsed parameters to parameters
@@ -416,7 +416,7 @@ if ($restart_case eq "T") {
 # if auto_malloc is turned on, compute max_del_mutn_per_indiv
 # and max_fav_mutn_per_indiv
 if($auto_malloc) {
-   require "memory.inc";
+   require "./memory.inc";
 }
 
 ### write description to file
@@ -633,7 +633,7 @@ if($disk_usage > $quota) {
 }
 
 # write plot files
-require "plot_gnuplot_recipes.cgi";
+require "./plot_gnuplot_recipes.cgi";
 
 # compute mean fitness effect
 
@@ -773,7 +773,7 @@ print "<hr width=400 align=left>";
 #
 # Display mendel.in file to screen
 #
-require "more.cgi";
+require "./more.cgi";
 
 print "<hr width=400 align=left>";
 print "</pre>";

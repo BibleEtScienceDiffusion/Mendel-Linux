@@ -16,12 +16,12 @@
 #
 ##############################################################################
 
-#require "/usr/lib/perl5/vendor_perl/5.6.1/HTTP/BrowserDetect.pm";
+#require ".//usr/lib/perl5/vendor_perl/5.6.1/HTTP/BrowserDetect.pm";
 #my $mybrowser = new HTTP::BrowserDetect($user_agent_string);
 #$browser = $mybrowser->browser_string();
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 # this is for starting a case from list_cases.cgi
 if ($case_id eq "") { 
@@ -716,7 +716,7 @@ if($os eq "linux") {
 }
 
 # Read the parameters from the input file
-require "input_file_parser.inc";
+require "./input_file_parser.inc";
 $case_id = $my_case_id;
 print "<font color=red>$done</font>";
 
@@ -914,7 +914,7 @@ if ($engine eq "j" || $engine eq "2") {
 print <<ZzZz;
 <!-- 
 <td align=right valign=bottom>
-<form name="template_form" method=post action="start.cgi">
+<form name="template_form" method=post action="./start.cgi">
 <select name="template" onChange="template_form.submit()">
 $template_options
 </select>

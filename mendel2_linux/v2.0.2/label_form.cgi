@@ -37,7 +37,7 @@ $label=`head -1 $run_dir/$case_id/README`;
 $long_label=`tail -1 $run_dir/$case_id/README`;
 
 print <<End_of_Doc;
-	<form name="label_form" method="post" action="label_post.pl">
+	<form name="label_form" method="post" action="./label_post.pl">
 	<h2>Enter label to be added for case $case_id?</h2>
         <p>Note: may only use alphabet characters.  Some symbols such as = )  ! & will be intrepeted by the form parser as meaning something other than you intended. Recommend using standard Fortran conventions. For example, instead of "test=1" use "test.eq.1".</p>
 

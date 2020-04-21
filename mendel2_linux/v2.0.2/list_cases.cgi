@@ -11,11 +11,11 @@
 #
 ##############################################################################
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 if ($os eq "windows") {
-   require "list_cases_win.cgi";
+   require "./list_cases_win.cgi";
    exit;
 }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 $plot_width = 640;
 $max_gens = 5000;
@@ -24,7 +24,7 @@ if ($case_id eq "") {
 
 # Read the parameters from the input file to get fitness_distrib_type
 $path = "$run_dir/$user_id/$case_id/mendel.in";
-require "input_file_parser.inc";
+require "./input_file_parser.inc";
 
 #print "case_id is $case_id<br>";
 #print "user_id is $user_id<br>";
@@ -164,7 +164,7 @@ print <<END_HTML;
    });
    </script>
 
-   <form name="mutn_form" method="post" action="more.cgi">
+   <form name="mutn_form" method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hst">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -283,7 +283,7 @@ print <<END_HTML;
       });
    </script>
 
-   <form name="fit_form" method="post" action="more.cgi">
+   <form name="fit_form" method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hst">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -304,7 +304,7 @@ print <<END_HTML;
 
 <!--
 <center>
-<form method="post" action="plot_gnuplot.cgi">
+<form method="post" action="./plot_gnuplot.cgi">
 <input type="hidden" name="case_id" value="$case_id">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="user_id" value="$user_id">
@@ -409,7 +409,7 @@ print <<END_HTML;
       }); // close function
    </script>
 
-   <form name="dst_form" method="post" action="more.cgi">
+   <form name="dst_form" method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.dst">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -554,7 +554,7 @@ print <<END_HTML;
    });
    </script>
 
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.thr">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -658,7 +658,7 @@ print <<END_HTML;
    });
    </script>
 
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hap">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -837,7 +837,7 @@ print <<END_HTML;
    });
    </script>
 
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.hap">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -945,7 +945,7 @@ print <<END_HTML;
    });
    </script>
 
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.sel">
    <input type="hidden" name="run_dir" value="$run_dir">
@@ -1071,7 +1071,7 @@ print <<END_HTML;
    });
    </script>
 
-   <form method="post" action="more.cgi">
+   <form method="post" action="./more.cgi">
    <input type="hidden" name="case_id" value="$case_id">
    <input type="hidden" name="file_name" value="${case_id}.000.plm">
    <input type="hidden" name="run_dir" value="$run_dir">

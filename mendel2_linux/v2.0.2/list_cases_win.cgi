@@ -9,8 +9,8 @@
 # Author: Joe Smith <js-cgi@inwap.com> 11-Feb-1996
 ############################################################################
 
-require "config.inc";
-require "parse.inc";
+require "./config.inc";
+require "./parse.inc";
 
 $user_id = $formdata{'user_id'};
 $mendel_run_dir = "$run_dir/$user_id";

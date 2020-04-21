@@ -34,7 +34,7 @@ $label=$formdata{'label'};
 $long_label=$formdata{'long_label'};
 $archive=$formdata{'archive'};
 
-require "config.inc";
+require "./config.inc";
 
 if (lc($archive) eq "on") {
         $archive ="A";

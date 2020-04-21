@@ -10,7 +10,7 @@
 #
 ##############################################################################
 
-require "parse.inc";
+require "./parse.inc";
 
 $cols=$formdata{'cols'};
 
@@ -37,7 +37,7 @@ if ($options eq "keyword") {
    $options = "";
 }
 
-require "config.inc";
+require "./config.inc";
 
 $selected_cases=$formdata{'selected_cases'};
 @cases = split(/:/,$selected_cases);

@@ -7,8 +7,8 @@
 # jQuery likes.
 ##############################################################################
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 $case_id=$formdata{'case_id'};
 $user_id=$formdata{'user_id'};
@@ -83,7 +83,7 @@ End_of_Doc
 
 #$auto = 1;
 #$num_lines = 8;
-#require "output.cgi";
+#require "./output.cgi";
 
 
 print "</body>";

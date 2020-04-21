@@ -2,7 +2,7 @@
 
       use random_pkg
       include 'common.h'
-      include '/usr/local/include/mpif.h'
+      include '/usr/include/mpi/mpif.h'
 
       real*8,  allocatable, dimension(:,:,:)   :: linkage_block_fitness,
      &                                              offsprng_lb_fitness
@@ -1009,7 +1009,7 @@ c     START_MPI
 
       use random_pkg
       include 'common.h'
-      include '/usr/local/include/mpif.h'
+      include '/usr/include/mpi/mpif.h'
       integer dmutn(max_del_mutn_per_indiv/2,2,*)
       integer fmutn(max_fav_mutn_per_indiv/2,2,*)
       integer pop_size_array(num_tribes), current_global_pop_size
@@ -1155,7 +1155,7 @@ c     END_MPI
      &   ica_count, gen, print_flag, current_global_pop_size)
       use random_pkg
       include 'common.h'
-      include '/usr/local/include/mpif.h'
+      include '/usr/include/mpi/mpif.h'
       integer dmutn(max_del_mutn_per_indiv/2,2,*)
       integer fmutn(max_fav_mutn_per_indiv/2,2,*)
       integer lb_mutn_count(num_linkage_subunits,2,2,*)
@@ -2445,7 +2445,7 @@ c...  Analyze percent homozygosity and heterozygosity of favorable mutations
      &                                           max_size, gen)
 
       include 'common.h'
-      include '/usr/local/include/mpif.h'
+      include '/usr/include/mpi/mpif.h'
       integer MNP ! Maximum Number of Polymorphisms
       parameter (MNP=1000000)
       integer dmutn(max_del_mutn_per_indiv/2,2,*)

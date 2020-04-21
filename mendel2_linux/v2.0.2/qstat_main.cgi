@@ -15,9 +15,9 @@
 #
 ##############################################################################
 
-require "config.inc";
+require "./config.inc";
 if ($os eq "windows") {
-   require "qstatw.cgi";
+   require "./qstatw.cgi";
    exit;
 }
 

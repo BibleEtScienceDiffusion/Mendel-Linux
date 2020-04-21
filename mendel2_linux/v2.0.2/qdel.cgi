@@ -8,7 +8,7 @@
 #
 ##############################################################################
 
-require "config.inc";
+require "./config.inc";
 
 read(STDIN, $buffer,$ENV{'CONTENT_LENGTH'});
 $buffer =~ tr/+/ /;

@@ -6,8 +6,8 @@
 # various files which Flot uses to plot the data in real-time. #
 ################################################################
 
-require "parse.inc";
-require "config.inc";
+require "./parse.inc";
+require "./config.inc";
 
 $case_id=$formdata{'case_id'};
 $user_id=$formdata{'user_id'};

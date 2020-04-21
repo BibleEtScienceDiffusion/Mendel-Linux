@@ -9,7 +9,7 @@
 #
 ##############################################################################
 
-require "parse.inc";
+require "./parse.inc";
 
 # if posting from control panel 
 if ($case_id eq "") {
@@ -27,7 +27,7 @@ if ($case_id eq "") {
    }
 }
 
-require "config.inc";
+require "./config.inc";
 
 $selected_cases=$formdata{'selected_cases'};
 @case = split(/:/,$selected_cases);
@@ -98,7 +98,7 @@ $cid = $case_id;
 $path="$run_dir/$user_id/$case_id/mendel.in";
 # problem with input_file_parser since new style of input file v1.9.3 
 # following will set case_id to value in mendel.in... may cause problem
-require "input_file_parser.inc";
+require "./input_file_parser.inc";
 
 #if($is_parallel) {
 #   $tribe = "001";  # if tribes die 000 will stop reporting
@@ -334,7 +334,7 @@ print <<End_Print;
 <tr>
 <td width=$plot_width><center><em>updated every generation</em></center></td>
 <td align=right>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -342,7 +342,7 @@ print <<End_Print;
 <input type="submit" value="Modify plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.hst">
 <input type="hidden" name="run_dir" value="$run_dir">
@@ -366,7 +366,7 @@ print <<End_Print;
 <tr>
 <td width=$plot_width><center><em>updated every generation</em></center></td>
 <td align=right>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -374,7 +374,7 @@ print <<End_Print;
 <input type="submit" value="Modify plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.hst">
 <input type="hidden" name="run_dir" value="$run_dir">
@@ -400,7 +400,7 @@ print <<End_Print;
 <table><tr>
 <td width=$plot_width><center><em>updated every 20 generations</em></center></td>
 <td align=right>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -408,7 +408,7 @@ print <<End_Print;
 <input type="submit" value="Modify Deleterious plot">
 </form>
 </td><td>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -416,7 +416,7 @@ print <<End_Print;
 <input type="submit" value="Modify Favorable plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.dst">
 <input type="hidden" name="run_dir" value="$run_dir">
@@ -446,7 +446,7 @@ $fdst
 <table><tr>
 <td width=$plot_width><center><em>updated every 20 generations</em></center></td>
 <td>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -454,7 +454,7 @@ $fdst
 <input type="submit" value="Modify plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.thr">
 <input type="hidden" name="run_dir" value="$run_dir">
@@ -480,7 +480,7 @@ Favorable threshold at generation $sgen = $fst<br>
 <table><tr>
 <td width=$plot_width><center><em>updated every 20 generations</em></center></td>
 <td>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -488,7 +488,7 @@ Favorable threshold at generation $sgen = $fst<br>
 <input type="submit" value="Modify deleterious plot">
 </form>
 </td><td>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -496,7 +496,7 @@ Favorable threshold at generation $sgen = $fst<br>
 <input type="submit" value="Modify beneficial plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.hap">
 <input type="hidden" name="run_dir" value="$run_dir">
@@ -520,7 +520,7 @@ Favorable threshold at generation $sgen = $fst<br>
 <tr>
 <td width=$plot_width><center><em>updated every 20 generations</em></center></td>
 <td>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -528,7 +528,7 @@ Favorable threshold at generation $sgen = $fst<br>
 <input type="submit" value="Modify plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.hap">
 <input type="hidden" name="run_dir" value="$run_dir">
@@ -555,7 +555,7 @@ Linkage blocks which have a positive fitness value = $lb_fitness_percent_positiv
 <tr>
 <td width=$plot_width><center><em>updated every 20 generations</em></center></td>
 <td>
-<form method="post" action="plot_gnuplot_modify.cgi">
+<form method="post" action="./plot_gnuplot_modify.cgi">
 <input type="hidden" name="run_dir" value="$run_dir">
 <input type="hidden" name="cid" value="$cid">
 <input type="hidden" name="user_id" value="$user_id">
@@ -563,7 +563,7 @@ Linkage blocks which have a positive fitness value = $lb_fitness_percent_positiv
 <input type="submit" value="Modify plot">
 </form>
 </td><td>
-<form name="list_files" method="post" action="more.cgi" target="_blank">
+<form name="list_files" method="post" action="./more.cgi" target="_blank">
 <input type="hidden" name="case_id" value="$cid">
 <input type="hidden" name="file_name" value="${cid}.000.sel">
 <input type="hidden" name="run_dir" value="$run_dir">

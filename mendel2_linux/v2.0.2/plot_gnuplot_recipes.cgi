@@ -20,7 +20,7 @@
 ##############################################################################
 
 #following line has problems when combining plots
-#require "parse.inc";
+#require "./parse.inc";
 
 read(STDIN, $buffer,$ENV{'CONTENT_LENGTH'});
 $buffer =~ tr/+/ /;
@@ -76,7 +76,7 @@ if ($numArgs >= 1) {
    $case_dir = ".";
    $path="$case_dir/mendel.in";
    if(-f $path) {
-      require "$this_dir/input_file_parser.inc";
+      require "./$this_dir/input_file_parser.inc";
    } else {
       $case_id = $ARGV[0];
    }
@@ -84,7 +84,7 @@ if ($numArgs >= 1) {
 ## if posting to this file from another form 
 ## rather than requiring it
 } elsif ($case_id eq "") {
-   require "config.inc";
+   require "./config.inc";
    $case_id=$formdata{'case_id'};
 
    #$run_dir=$formdata{'run_dir'};
@@ -101,7 +101,7 @@ if ($numArgs >= 1) {
    #print "plot type is: $plot<br>";
    #print "plot_avg_data is:",$plot_avg_data,"<br>";
 
-   #require "plot.cgi";
+   #require "./plot.cgi";
 
    $combine_plots=0;
    ########################################
@@ -177,7 +177,7 @@ if($caller eq "modify") {
    print "<meta http-equiv=\"refresh\" content=\"1;URL=plot_gnuplot.cgi?case_id=$case_id&user_id=$user_id\">\n";
 
    $path=$case_dir."/mendel.in";
-   require "input_file_parser.inc";
+   require "./input_file_parser.inc";
    # reading the mendel.in file will overwrite the plot_avg_data option
    # specified in the Modify plots dialogue, so set it back to 
    $plot_avg_data = $mod_plot_avg_data;

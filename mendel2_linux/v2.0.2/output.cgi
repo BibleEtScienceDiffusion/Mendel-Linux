@@ -8,8 +8,8 @@
 #
 ##############################################################################
 
-require "config.inc";
-require "parse.inc";
+require "./config.inc";
+require "./parse.inc";
 
 # if being posted from control panel
 if ($case_id eq "") {
