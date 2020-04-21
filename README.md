@@ -8,7 +8,7 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 > git clone https://github.com/whbrewer/spc.git && cd spc
 
 2. install virtualenv with pip3
-> sudo apt-get install python3-pip3 ; sudo pip3 install virtualenv
+> sudo apt-get install python3-pip3 ; sudo pip3 install virtualenv #sudo apt-get install pip3 is useless if pip3 is already installed
 
 3. create database and config file
 > ./spc init 
