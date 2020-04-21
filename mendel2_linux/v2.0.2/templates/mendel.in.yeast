@@ -1,0 +1,77 @@
+&basic
+   case_id = 'test00'
+   mutn_rate = 0.443
+   frac_fav_mutn = 0.0001
+   reproductive_rate = 2.0
+   pop_size = 10000
+   num_generations = 2000
+/
+
+&mutations
+   fitness_distrib_type = 1 ! exponential_mutation_effect
+   fraction_neutral = 0.0
+   genome_size = 9.371e+07
+   high_impact_mutn_fraction = 0.001
+   high_impact_mutn_threshold = 0.1
+   max_fav_fitness_gain = 0.01
+
+   fraction_recessive = 0.0
+   recessive_hetero_expression = 0.5
+   dominant_hetero_expression = 0.5
+
+   multiplicative_weighting = 0.0
+
+   synergistic_epistasis = F
+
+   upload_mutations = F
+
+   allow_back_mutn = F
+/
+
+&selection
+   fraction_random_death = 0.0
+   heritability = 0.4
+   non_scaling_noise = 0.05
+   fitness_dependent_fertility = T
+   selection_scheme = 2 ! unrestricted_probability_selection
+/
+
+&population
+   clonal_reproduction = T
+   clonal_haploid = T
+   fraction_self_fertilization = 0.0
+
+   num_contrasting_alleles = 0
+   initial_alleles_mean_effect = 0.0
+
+   dynamic_linkage = T
+   haploid_chromosome_number = 16
+   num_linkage_subunits = 1
+
+   pop_growth_model = 0 ! fixed_population
+
+   bottleneck_yes = F
+/
+
+&substructure
+   is_parallel = F
+/
+
+&computation
+   max_del_mutn_per_indiv = 10000
+   max_fav_mutn_per_indiv = 10000
+   random_number_seed = 42
+   ignore_neutrals = T
+   extinction_threshold = 0.
+   write_dump = F
+   restart_case = F
+   plot_allele_gens = 100
+   data_file_path = './'
+/
+
+&interface
+   auto_malloc = 1
+   run_queue = 'batch'
+   engine = 'f'
+/
+

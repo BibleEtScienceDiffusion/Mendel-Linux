@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> 
+<head>
+
+<link type="text/css" rel="StyleSheet" href="/mendel/css/form.css" />
+<title>Contents</title>
+<script language="javascript">
+      function getCaseID(form) {
+        form.case_id.value = caseidform.case_id.value;
+        return (true);
+      }
+      function clearCaseID() {
+        document.getElementById("case_id").reset;
+      }
+      // make focus to List Files filter when clicking "/" button
+      document.onkeyup = KeyCheck;
+      function KeyCheck(e) {
+         var KeyID = (window.event) ? event.keyCode : e.keyCode;
+         switch(KeyID) {
+            case 191:
+               document.caseidform.case_id.focus();
+         }
+      }
+</script>
+</head>
+
+<body bgcolor="white" text="000080" onload="document.caseidform.case_id.focus()">
+<b>
+
+<fieldset>
+
+<legend> <img src="images/mendel.png" border=0></legend>
+
+<table>
+<tr>
+<td valign="top">Case ID:</td>
+<td valign="bottom">
+<form name="caseidform" method="POST"> 
+<input type="text" id="case_id" size=6 accesskey="C" onfocus="this.select();">
+</form>
+</td>
+</tr>
+
+<tr>
+
+<td>
+<form name="start_form" method="POST" action="/cgi-bin/v2.0.2/start.cgi" 
+      target="right" onSubmit="return getCaseID(this)">
+   <script language="javascript">
+      var browserName=navigator.appName;
+      var browserVer=parseInt(navigator.appVersion);
+      document.write('<input type="hidden" name="browser" value="'+browserName+'">');
+      document.write('<input type="hidden" name="screenresx" value="'+screen.width+'">');
+      document.write('<input type="hidden" name="screenresy" value="'+screen.height+'">');
+   </script>
+   <span class="button">
+      <input type="submit" value="Start" class="add" style="width:6em"
+             title="(S)tart a new run" accesskey="S">
+   </span>
+   <input type="hidden" name="case_id">
+   <input type="hidden" name="version" value="v2.0.2">
+   <input type="hidden" name="quota"   value="16384"> 
+   <input type="hidden" name="user_id" value="gregor">
+</form>
+</td>
+
+<td> 
+<form onsubmit="clearCaseID()">
+   <span class="button">
+      <input class="clear" type="submit" value="Clear" style="width:6em">
+   </span>
+</form>
+</td>
+
+</tr><tr>
+
+<td>
+<form name="input_form" method="POST" action="/cgi-bin/v2.0.2/more.cgi" 
+      target="right" onSubmit="return getCaseID(this)">
+   <span class="button">
+      <input class="inputs" type="submit" value="Inputs" style="width:6em" 
+             title="Show (i)nputs of CaseID" accesskey="I">
+   </span>
+   <input type="hidden" name="file_name" value="mendel.in">
+   <input type="hidden" size=6 name="case_id">
+   <input type="hidden" name="user_id" value="gregor">
+</form>
+</td> 
+
+<td>
+<form name="output_form" method="POST" action="/cgi-bin/v2.0.2/output.cgi" 
+      target="right" onSubmit="return getCaseID(this)">
+   <span class="button">
+      <input class="output" type="submit" value="Output" style="width:6em" 
+             title="Show console (o)utput of CaseID" accesskey="O">
+   </span>
+   <input type="hidden" size=6 name="case_id">
+   <input type="hidden" name="user_id" value="gregor">
+</form>
+</td>
+
+</tr><tr>
+
+<td>
+<form name="list_form" method="POST" action="/cgi-bin/v2.0.2/list_files.cgi" 
+      target="right" onSubmit="return getCaseID(this)">
+   <input type="hidden" size=6 name="case_id">
+   <span class="button">
+      <input class="files" type="submit" value="Files" style="width:6em" 
+             title="List (f)iles for CaseID" accesskey="F">
+   </span>
+   <input type="hidden" name="user_id" value="gregor">
+</form>
+</td> 
+
+<td>
+<form name="plot_form" method="POST" onSubmit="return getCaseID(this)" 
+      action="/cgi-bin/v2.0.2/plot_flot.cgi" target="right">
+   <span class="button">
+      <input class="plot" type="submit" value="Plot" style="width:6em" 
+             title="Plot Mendel data for CaseID (G)" accesskey="G">
+   </span>
+   <input type="hidden" size=6 name="case_id" value="">
+   <input type="hidden" name="user_id" value="gregor">
+   <input type="hidden" name="version" value="v2.0.2">
+</form>
+</td>
+
+</tr><tr>
+
+<td>
+<form name="list_form" method="POST" action="/cgi-bin/v2.0.2/list_cases.cgi" 
+      target="right" onSubmit="return getCaseID(this)">
+   <span class="button">
+      <input class="cases" type="submit" value="Cases" style="width:6em" 
+             title="(L)ist and manage cases" accesskey="L">
+   </span>
+   <input type="hidden" name="case_id"> 
+   <input type="hidden" name="version" value="v2.0.2">
+   <input type="hidden" name="user_id" value="gregor">
+   <input type="hidden" name="admin" value="1">
+</form>
+</td> 
+
+<td> 
+<form method="GET" action="other.html" target="status">
+   <span class="button">
+      <input class="other" type="submit" value="Other" style="width:6em" 
+             title="Lin(k)s to Versions, Archives, Help, Admin, etc." accesskey="K">
+   </span>
+</form>
+</td>
+
+</tr>
+
+<!--
+<tr>
+<td>
+<form name="qstat_form" method="GET" action="/cgi-bin/v2.0.2/qstat.cgi" 
+      target="status">
+   <span class="button">
+      <input class="status" type="submit" size=20 value="Status" 
+             style="width:6em" title="List (q)ueue of running jobs" 
+             accesskey="Q">
+   </span>
+   <input type="hidden" name="user_id" value="gregor">
+</form>
+</td>
+
+<td>
+<form name="account_form" method="POST" action="account.html" target="status" >
+   <span class="button">
+   <input class="account" type="submit" value="User" style="width:6em" 
+          title="User (a)ccount options" accesskey="A">
+   </span>
+</form>
+</td>
+
+</tr>
+-->
+
+</table>
+
+<center> 
+<font size=1 color=gray>
+CONTROL PANEL :: v2.0.2 :: gregor
+</font> 
+</center>
+
+</fieldset>
+
+</body> 
+</html>
+

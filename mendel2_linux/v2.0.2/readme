@@ -1,0 +1,449 @@
+At this time, this file contains various internal notes.
+Change Log, 3rd-party dependencies information,
+and a To-do list.
+
+Known bugs:
+- list another user's cases, then click "Files" on control panel
+
+----------------------------------------------------------------------
+MENDEL Interface Back-end Change Log
+----------------------------------------------------------------------
+
+v2.0.2
+  - Fix many minor issues with plots in flot
+  - Modify diagnostics_selection to allow for super beneficials
+  - Make locked area, where features go that are not going to be released
+  - Rename new_mutn_per_offspring to mutn_rate
+  - Add feature -- all mutations neutral
+
+v2.0.1
+  - Changes to start.cgi concerning more explicit indication of 
+    number of neutrals.
+
+v2.0.0
+  - Make many changes to plot_flot.cgi to completely replace Gnuplot
+    as a plotting solution. 
+
+v1.9 Generalize Mendel for small genomes and Prepare to Launch v2.0
+
+v1.9.8
+  - Get Mendel to be able to compile using gfortran compiler.
+  - This required reverting back to using the Fortran 90 convention 
+    for logicals: T/F, rather than 1/0.
+
+v1.9.7
+  - added John Baumgardner's latest treatment of synergistic epistasis
+
+v1.9.6
+  - output Neutral mutations to hst file and plot in fig 1
+  - fix problem running on head node, need to set ppn = num_procs 
+    in qsub.pl so multiple parallel jobs can run simultaneously on head node
+  - add parameters plot_allele_gens
+  - renumber plots, so we don't have plot1a and plot1b,
+    remove references to plot numbers in source code...
+    so we don't have to keep changing the source code when the 
+    interface changes.
+
+v1.9.5
+  - make plots using jQuery-based Flot library (flots.cgi)
+  - add extinction_threshold as user-input parameter
+  - rename plot*.cgi to gnuplot*.cgi
+  - set dominant_hetero_expression = 1 when equal effect fitness dist.
+  - add temperature monitoring ability... show in list_cases.cgi
+  - make non-scaling noise to be 0.05 for 3 of the 4 selection schemes
+  - disable the ability to read in parameters from pre-1.9.3 format.
+    I thought I could detect older input files from the shorter length
+    of the file (<70 lines).  However, some cases post-1.9.3 have
+    less than 70 lines, which will give problems when trying to restart
+    from a newer case which has an input file less than 70 lines. 
+
+v1.9.4
+  - deal with memory issues... add new parameter in config.inc
+    max_ram_per_node and change allocated_ram to ram_per_job
+  - fix some issues related to equal effect mutation distributions
+  - fix read_restart_dump since moving to namelist.input format
+
+v1.9.3
+  - convert mendel.in to namelist.input format
+  - remove organism_type parameter
+  - remove input_file_reader.inc file... always use input_file_parser.inc
+
+v1.9.2
+  - includes mods for mendel to be able to run on new Cornell server
+  - includes fix to social bonus treatment
+  - includes bug fix for back mutation treatment
+  - more interface changes
+  - includes global statistical analysis of alleles in the case
+    of parallel runs
+
+v1.9.1
+  - includes bug fix for parallel runs
+  - more interface changes
+
+v1.9.0 Generalize Mendel for use with different types of organisms
+  - remove tc_scaling_exponent
+  - add organism_type parameter
+  - change many labels in start interface
+  - change haploid_genome_size to genome_size
+  - change offspring_per_female to reproductive_rate
+  - add fraction_neutrals input box, which effects genome_size, and mutation rate
+  - add track_neutrals checkbox
+  - move population substructure as separate tab
+
+v1.8.6
+- JRB made signicant changes to the way that Mendel handles synergistic epistasis
+
+v1.8.5
+- JRB fixed a few problems with previous implementations of group selection:
+  * there was a second check in selection() that was resetting the 
+    current_pop_size
+  * moved where the new current_pop_size was getting computed later
+    in the code, after where the new offspring has been generated
+  * fixed inconsistencies in the common.h file, where mix-type
+    variables were in the same common block
+
+v1.8.4
+- use multiplicative model
+
+v1.8.3
+- use additive model
+- random noise better implementation
+- a number of changes to start.cgi
+
+v1.8.2
+- fix fertility
+- allow fraction_random_death to adjust ...
+
+v1.8.1.2
+- correct fraction_selection (instead of 2/3.. should be 1-2/opf)
+- correct plot 1b y2axis to be percentage of global pop. size
+
+v1.8.1.1
+- let offspring_per_female not drift
+
+v1.8.0
+- previous version v1.8.0 has been modified by JRB for him to find 
+  problems in group selection
+- group selection, don't let offspring_per_female to drift
+
+v1.7 Group Selection Version
+
+v1.7.8
+- add HIV template
+- JRB fixed bug related to back mutations
+
+v1.7.7
+- fix some problems when clonal_reproduction is on, and the 
+  bottleneck_pop_size is set to one
+
+v1.7.6
+- implement cyclic bottlenecking, when the bottleneck_generation
+  is set to a negative value
+
+v1.7.5
+- add ability to do back mutations
+
+v1.7.4
+- setup start.cgi so that upload mutations dialogue is separate
+  than the advanced div and can be turned on either under mutations
+  or under the "population substructure" button
+- cleaned up coding for group selection by tribal competition
+  and checked all changes into CVS repository
+
+v1.7.3
+- implement altruistic option
+- implement social_bonus_factor
+
+v1.7.2 
+- worked with John S. to get tribal competition working correctly
+
+v1.7.1 add group heritability
+
+v1.7.0 upload mutations version
+- also added improved ability to randomly generate new case id
+
+v1.6 Tribal Competition Version
+
+v1.6.7 tribal-competition version with attenuation parameter for multiple tribes
+- add small nice feature to both list_cases.cgi and list_files.cgi to 
+  focus on the search box when the user clicks the "/" ... makes it
+  work similar to gmail.com.  Also focus to the search box whenever the 
+  user clicks the button on the control panel
+
+v1.6.6 tribal-competition version with attenuation parameter for two tribes
+- add grpsel_scaling_exponent as input parameter
+
+v1.6.5 tribal-competition version
+- add tribal_competition option to start.cgi, input_file_reader.inc, 
+  input_file_parser.inc, input_file_writer.pl, and significant changes
+  in mendel.f 
+- mendel.f - re-initialize random number generator every generation
+- significant mods to plot_recipes.cgi to annotate tribe numbers on 
+  plots, plus switch plot 1b to always report population size on y2 axis
+
+v1.6.4 percent heterozygosity version
+- include percent heterozygosity analysis. 
+
+v1.6.3 general tribal-death-tolerant version
+- initial working version of tribal-death-tolerance for number of tribes
+  greater than 2.
+- modify qstat.cgi to read mendel.in file and use caseid.001.hst file
+  in parallel cases, otherwise use caseid.000.hst file.
+- caveats:
+   * the status pane on bottom left quits working in the case that
+     there are two tribes remaining, and one dies.  in essence,
+     the parallel switch is turned off from that point.
+
+v1.6.2
+- improve the coding in mpi_migration by grouping MPI wait functions
+  and only calling a wait function when required.
+- swap Recv and Send statements so that Recv's show up before Sends.
+
+v1.6.1 two-tribe tribal-death-tolerant version
+- get tribal death working for two tribes so that either the first
+  or the second tribe can die and the other continue 
+- also can set one of the tribes to run less number of generations than
+  then other
+- known problems:
+  * when one tribe shuts down the qstat.cgi appears to hang while the
+    other tribe waits to finish
+- added a $max_tribes variable to config.inc
+- modify start.cgi to populate tribe_id select option with the
+  number of options consistent with the number of tribes.
+  also, enforce that the user cannot specify a number of tribes
+  that is greater than max_tribes.
+- notes: when running non-homogenous tribes, one will be able to 
+  overwrite an old case.  the reason for this is that I must allow
+  the user to "rewrite" multiple input files
+- add extinction threshold to fit_hst plot
+
+v1.6.0
+- pretty much same as v1.5.2
+
+v1.5.2
+- initial version of tribal-death-tolerant version of Mendel
+  works only for two tribes when the second tribe dies 
+
+v1.5.1
+- modify diagnostics_polymorphisms_plot7 to reanalyze and rebin
+  allele frequency statistics based on global population 11/4/09
+
+v1.5.0
+- FIX PARALLEL BUG ~ 10/30/2009
+- fix problem in start.cgi when using fxn_set_case_id where the control
+  panel had an entry such as: jcs21/jcs001 (strip the "jcs21/" off)
+- fix problem in start.cgi which would allow user to run a case in 
+  another user's directory
+- improvements and simplification of memory management for parallel cases
+  in memory.inc
+- considerable changes in memory.inc to automatically detect available
+  RAM in Windows versions
+
+v1.4.7
+- massive renaming of Perl scripts to adhere to the following 
+  conventions
+- rename some files such that they logically pair with other
+  files to which they are related (e.g. get_data.cgi -> monitor.ajax,
+  mpd.cgi -> qmpd.cgi, etc.)
+----------------------------------------------------------------------
+FILE EXTENSION NAMING CONVENTION
+
+While all the back-end script files are executed by Perl
+The philosophy of the naming the extensions are by the following
+rules:
+
+1) *.cgi extension is used for Perl scripts that create HTML content
+
+2) *.pl files are called secondarily from other *.cgi files
+   and do not generate HTML content.  
+     
+3) *.inc files are required (included) in other .cgi and .pl files
+
+----------------------------------------------------------------------
+
+v1.4.6 ~ 6/2009
+- consolidate queing system CGI's
+- add functionality for managing jobs without a Queue
+- clean up files, remove un-needed commented-out code.
+- add option for fill histograms with solid color: 
+   modified plot_modify.cgi & plot_recipes.cgi & plots.cgi
+
+v1.4.5
+- SF feature request #2049916 modify list_cases.cgi to retain the
+  case filter
+- modify plots.cgi to update the Generations to the current value before 
+  running gnuplot
+- modify plot_modify.cgi to read in settings in *.gnu files
+- modify start.cgi. replace disable_if_windows, with individual
+  disable variables. e.g. disable_queuing_system, disable_bottlenecks, etc. 
+- first Linux auto-intall version
+
+v1.4.4
+- modify at.cgi & memory.cgi to be able to launch mpi jobs using atq
+- add some logic in start.cgi to automatically change to C version 
+  when doing Dynamic Populations or Parallel sims
+- fix bug in rename.cgi
+- implement built-in ATQ queueing system.
+  new files: at.cgi, atq.cgi, atrm.cgi
+
+v1.4.3
+- modify input_file.cgi to output case sizes (du -ms) 
+  when failing because over quota
+- fix bug in list_cases.cgi when searching through labels
+- fix bug in list_cases.cgi related to when searching for cases
+  using the Case Filter
+- modify qsub.cgi and qstat.cgi so that can handle multiple users
+  this required create a file called case.log in qsub.cgi which qstat.cgi
+  uses to associate case_id's with user_id's
+- modify plots.cgi, start.cgi, output.cgi, list_cases.cgi, more.cgi
+  to be able to handle case_id's in the form uid/cid e.g. john/test01
+  so that plots can be made of other user's cases
+
+v1.4.2
+- fix problems in start.cgi that were preventing bottlenecks
+   and parallel runs.. there was additional spaces in two parameters
+- fix vulnerability in start.cgi which allowed users to start 
+  case without logging in 4/16/09
+- modify plot_modify & plot_recipes to turn off recessives for plot2
+  also read input parameters when modifying plots
+  allow users to turn on/off input parameters on plot
+- add unix2dos options in the "List Files" dialogue
+- fix plot_recipes to also combine favorable plots
+
+v1.4.1
+- make mods to plots2b (change scale, add dotted line)
+   and plot3 plot_recipes.cgi for beneficial selection thresholds
+- add monitor.cgi real-time output of data
+- add third Java option for engine in "Computation" tab under 
+  Advanced parameters.  changed c_engine to engine everywhere.
+  And change 0 and 1 to f, c, and j respectively.
+
+v1.4.0
+- more mods to plot_modify and plot_recipes to support EPS output
+
+v1.3.1 on 12/31/2008
+
+- add jQuery/AJAX features to improve web interface
+- add Navigation Tabs to start.cgi (uses /mendel/js/tab.webfx.css
+  and /mendel/css/tabpane.js)
+- greatly improve plots interface
+- make input file parser. modify start.cgi. add input_file_parser.cgi
+  and input_file_reader.cgi
+
+v1.3.0 on 12/21/2008
+
+- create separate user space directories
+- this affects everywhere run_dir is used 
+- add Copy function to rename.cgi
+- deprecate Archive function
+- add touch function
+- change compress format to zip so it is more compatible with Windows
+
+v1.2.3 on 12/14/2008
+- make changes to $run_dir variable such that the user
+  can now change the $run_dir variable in config.inc
+  and it will properly use the new $run_dir... previous
+  versions this did not work correctly.
+- C version - we have removed all known bugs
+
+v1.2.2
+- create parse.inc mainly to fix submissions using GET method
+  modify many files to require the parse.inc file.
+- add user information into case management
+- allow regular user's to see only their own cases
+- allow admin user's ability to see all cases
+
+v1.2.1
+- add coding to automatically disable some features when using Windows
+- add se_scaling_effect input parameter
+
+v1.2.0
+- add dynamic population sizes to interface
+- fix rename button so that not only case and files get renamed,
+but also filenames that are referenced within the files.
+
+v1.1.1
+- use version of cmendel that is 0-based instead of 1-based
+- fix various problems with working under windows
+
+v1.1.0
+- first real C version
+- input_file - fix bug
+- ~qstat.cgi - only show mpdboot button if no mpd's running
+
+v1.0.8
+5/29~ input_file.cgi - make warning for low number of linkage subunits
+      when dynamic linkage is turned on
+5/28~ input_file,plot_recipes,start.cgi - change booleans in input
+      file to 0's and 1's instead... to prepare to use C version of code
+      start,input_file,qsub - add option c_engine (changed later to engine)
+      which will allow users to run the C version of the code.
+
+v1.0.7
+5/26~ with_selected.cgi - add Tarball and Rename features
+      make slight changes to: plot_modify.cgi plot_recipes.cgi plots.cgi 
+      readme input_file.cgi rename.cgi plots_combine.cgi list_cases.cgi 
+      with_selected.cgi
+5/23~ plot_recipes, plot_modify, plots - add selection threshold history plot
+      rename all *.gnu *.png files - remove "plot_" b/c names are too long.
+      also change the names in list_cases.cgi
+5/22~ start.cgi, list_cases.cgi - fix MENDEL to work in Firefox
+5/21~ plot_recipes - plot using 50 bins for plot2a instead of 10
+      plot_modify - add ability to plot using lines instead of boxes
+5/9~  memory.cgi, qsub.cgi, start.cgi, input_file.cgi - 
+      resurrect single_job (now himem) run_queue to instead of changing the
+      queue, instead to allocate 7500MB memory, and then 
+      manually schedule the job to use c101 node on epiphany
+      This option will not work on other servers at this time.
+
+v1.0.6
+5/7+  import.cgi, import2.cgi, servers.cgi - add infrastructure
+      for working across multiple MENDEL servers 
+      by adding ability to list cases from other servers (~list_cases.cgi)
+      and import parameters from other servers (~start.cgi)
+5/4~  plot_recipes.cgi - add plot of after/before selection ratio
+      to plot 5, clean up printAxes function
+4/29~ plot_recipes.cgi - significant changes
+      make function printAxes, printInit, and printParameters
+      add option to turn off paramters on plots (also in plot_modify.cgi)
+      JRB modified PLM files to write out every 200 generations
+      so modify how .plm files are plotted, by using
+      plot "< tail -108 case01.000.plm"
+4/18~ add feature to boot MPD from the status panel
+      add file mpd.cgi
+      modify qstat.cgi, fix qstat_main.cgi      
+
+v1.0.5
+4/10~ rename create_input_file.cgi input_file.cgi
+      rename wq*.cgi q*w.cgi 
+4/8 ~ rename create_plot_recipes.cgi to plot_recipes.cgi
+    - create_plot_recipes.cgi, plots.cgi - remove *.plot_fav.gnu
+      b/c it is redundant ~ data is also in *.hap 
+4/7 + plot_modify.cgi, plots.cgi, create_plot_recipes.cgi - 
+      add ability to modify the xrange,yrange for the plots
+4/5 + combine_plots.cgi, with_selected.cgi, create_plot_recipes.cgi - 
+      add ability to combine multiple cases onto single plot
+4/4 ~ start.cgi, create_input_files.cgi - change selection_scheme option 4 
+      label to "partial truncation selection"
+4/2 ~ plots.cgi & create_plot_recipes.cgi - change .prc extension to .gnu 
+      to conform with Gnuplot standards
+    + archive.cgi - add arch_dir set in config.inc
+    - with_selected.cgi - remove user name for archive
+    ~ create_plot_recipes.cgi - replace $slash with /. Note: may 
+      need to revert back if we encounter problems with plots under Windows
+    ~ create_plot_files.cgi rename to create_plot_recipes.cgi
+
+
+-----------------------------
+KEY: + add - remove ~ change
+-----------------------------
+
+--------------------------------------------------
+Notes: to convert old plot images to new images,
+must do the following:
+
+rename ${case_id}_plot $case_id ${case_id}_plot*
+rename .prc .gnu *.prc
+sed -i 's/_plot//' *.gnu
+sed -i 's/png.small.color/png small/' *.gnu
+--------------------------------------------------

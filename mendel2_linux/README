@@ -1,0 +1,57 @@
+--------------------------------------------------------------------------
+  MENDEL'S ACCOUNTANT LINUX VERSION
+--------------------------------------------------------------------------
+
+The LINUX version of Mendel's Accountant has been tested on the following
+Linux distros: Ubuntu, SuSE, Fedora, and Debian. It should also work on
+similar variants such as CentOS and Redhat.
+
+This version has pre-compiled binaries included, so no compilation needs
+to be done.
+
+NOTE: There is a bug in the Flot plotting system which causes the plots
+not to work correctly on a few Linux distributions.  If this is a problem, 
+you may want to try using a different browser, or a different version of 
+Linux.  We are working to fix this and release an updated version ASAP.
+
+- The Mendel's Accountant Development Team
+
+---------------------------------------------------------------------------
+  INSTALLATION INSTRUCTIONS
+---------------------------------------------------------------------------
+
+  1. Download the distribution
+
+  2. Unpack the distribution. For example:
+
+     tar xvfz mendel_v2.0.2_linux.tgz 
+
+  3. Run the install script:
+ 
+     ./install
+
+---------------------------------------------------------------------------
+  HOW TO START USING MENDEL'S ACCOUNTANT
+---------------------------------------------------------------------------
+
+  To start using Mendel's Accountant, point your web browser to the 
+  following URL:
+
+     http://localhost/mendel/v2.0.2/index.html
+
+---------------------------------------------------------------------------
+  ADDITIONAL NOTES
+---------------------------------------------------------------------------
+
+1. During installation, this version will ask you how much memory
+you want to allow MENDEL to use. If you need to change the amount
+of memory which Mendel uses, edit the file:
+/Library/WebServer/CGI-Executables/v2.0/config.inc
+and the value of the variable $ram_per_job to the amount of RAM you
+have available.  More RAM means larger population sizes, more linkage
+blocks, etc.
+
+2. If you already have Mendel installed, you may want to uninstall
+before installing a new version.  If you uninstall Mendel, your
+data will still remain on your system and you will have access
+with the newer version.

@@ -1,0 +1,161 @@
+#!/bin/sh
+# Detects which OS and if it is Linux then it will detect which Linux Distribution.
+# Also check the status of the Web Server
+
+OS=`uname -s`
+REV=`uname -r`
+MACH=`uname -m`
+
+if [ "${OS}" = "Linux" ] ; then
+	KERNEL=`uname -r`
+	if [ -f /etc/redhat-release ] ; then
+		DIST='RedHat'
+		PSUEDONAME=`cat /etc/redhat-release | sed s/.*\(// | sed s/\)//`
+		REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//`
+                DOC_ROOT='/var/www/html'
+                CGI_BIN='/var/www/cgi-bin'
+		HTTP_STATUS=`service httpd status`
+                if pgrep httpd > /dev/null
+                then
+                   echo Great: apache is running
+                else 
+                   if yum list installed | grep apache > /dev/null
+                   then
+                      echo Great: apache is already installed
+                      echo However, it is not currently running.
+                      echo You only need to start it.
+                      echo Running the command: chkconfig httpd on
+                      # configure apache to start at boot time
+                      sudo chkconfig httpd on                      
+                      echo Running the command: service httpd start
+                      # start the service now
+                      service httpd start
+                   else
+		      echo FATAL ERROR
+		      echo Mendel\'s Accountant requires that the Apache webserver 
+		      echo installed.  It does not appear to be installed on your
+		      echo system.  You may try to run the following command:
+		      echo
+                      echo "  yum install httpd"
+		      echo
+		      echo After resolving this depency, rerun this install script.
+                      exit
+                   fi
+                fi
+	elif [ -f /etc/SuSE-release ] ; then
+		DIST=`cat /etc/SuSE-release | tr "\n" ' '| sed s/VERSION.*//`
+		REV=`cat /etc/SuSE-release | tr "\n" ' ' | sed s/.*=\ //`
+                DOC_ROOT='/srv/www/htdocs'
+                CGI_BIN='/srv/www/cgi-bin'
+                if pgrep httpd > /dev/null
+                then
+                   echo Great: apache is running
+                else 
+	           if [ -f /usr/sbin/httpd2 ] 
+                   then
+                      echo Great: apache is already installed
+                      echo However, it is not currently running.
+                      echo You only need to start it.
+                      echo Running the command: chkconfig httpd on
+                      # configure apache to start at boot time
+                      sudo /sbin/chkconfig httpd on                      
+                      echo Running the command: service httpd start
+                      # start the service now
+                      sudo /etc/init.d/apache2 start
+                   else
+		      echo FATAL ERROR
+		      echo Mendel\'s Accountant requires that the Apache webserver 
+		      echo installed.  It does not appear to be installed on your
+		      echo system.  You may try to run the following command:
+		      echo
+                      echo "  sudo zypper install apache2"
+		      echo
+		      echo After resolving this depency, rerun this install script.
+                      exit
+                   fi
+                fi
+	elif [ -f /etc/lsb-release ] ; then
+		DIST='Ubuntu'
+		PSUEDONAME=`grep CODENAME /etc/lsb-release | sed s/DISTRIB_CODENAME//`
+		REV=`grep RELEASE /etc/lsb-release | sed s/DISTRIB_RELEASE=//`
+                DOC_ROOT='/var/www'
+                CGI_BIN='/usr/lib/cgi-bin'
+                if pgrep apache2 > /dev/null
+                then
+                   echo Great: apache is running
+                else 
+                   echo "ERROR: Your webserver is not running..."
+                   echo "Now I will check if it is installed..."
+                   echo
+
+                   # check if webserver is installed as a package
+                   if dpkg -l | grep apache2 > /dev/null
+                   then
+                      echo Great: apache is already installed
+                      echo You only need to start it.
+                      echo Running the command: sysv-rc-conf apache on 
+                      echo 
+                      # configure apache to start on boot
+                      sudo sysv-rc-conf apache on
+                      # start apache now
+                      /etc/init.d/apache2 start 
+                   else  
+		      echo FATAL ERROR
+		      echo Mendel\'s Accountant requires that the Apache webserver 
+		      echo installed.  It does not appear to be installed on your
+		      echo system.  You may try to run the following command:
+		      echo
+                      echo "  sudo apt-get install apache2"
+		      echo
+		      echo After resolving this depency, rerun this install script.
+                      exit
+                   fi
+                fi 
+	elif [ -f /etc/debian_version ] ; then
+		DIST="Debian `cat /etc/debian_version`"
+		REV=""
+                DOC_ROOT='/var/www'
+                CGI_BIN='/usr/lib/cgi-bin'
+                if pgrep apache > /dev/null
+                then
+                   echo Great: apache is running
+                else 
+                   echo "ERROR: Your webserver is not running..."
+                   echo "Now I will check if it is installed..."
+                   echo
+
+                   # check if webserver is installed as a package
+                   if dpkg -l | grep apache2 > /dev/null
+                   then
+                      echo Great: apache is already installed
+                      echo You only need to start it.
+                      echo Running the command: sysv-rc-conf apache on 
+                      echo 
+                      # configure apache to start on boot
+                      sudo sysv-rc-conf apache2 on
+                      # start apache now
+                      /etc/init.d/apache2 start 
+                   else  
+		      echo FATAL ERROR
+		      echo Mendel\'s Accountant requires that the Apache webserver 
+		      echo installed.  It does not appear to be installed on your
+		      echo system.  You may try to run the following command:
+		      echo
+                      echo "  sudo apt-get install apache2"
+		      echo
+		      echo After resolving this depency, rerun this install script.
+                      exit
+                   fi
+                fi 
+	fi
+	
+	OSSTR="${OS} ${DIST} ${REV}(${PSUEDONAME} ${KERNEL} ${MACH})"
+elif [ "${OS}" = "Darwin" ] ; then
+   echo "FATAL ERROR: This Mendel distribution will only work on Linux"
+   echo "systems.  To run Mendel on Mac OS X, you will need to download"
+   echo "the Mac OS X version from "
+   echo "https://sourceforge.net/projects/mendelsaccount/files/"
+fi
+
+echo ${OSSTR}
+

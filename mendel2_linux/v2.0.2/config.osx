@@ -1,0 +1,35 @@
+# To make OSX release:
+# compile using /usr/local/bin/mpif90 with following options
+# -static-libgfortran -static-libgcc
+# also comment out mpich flags.
+# In templates, change default queue to noq.
+# Turn off locked features in start.cgi
+
+chop($thisos=`uname`);
+chop($hostname=`hostname`);
+
+$det = "disabled=true";
+
+$disable_pbs = $disable_himem = $det;
+#$disable_parallel = $det;
+
+$qsub="/usr/local/bin/qsub";
+$qstat="/usr/local/bin/qstat";
+$qdel="/usr/local/bin/qdel";
+$mpd_bin="/usr/local/bin";
+$gnuplot="/usr/bin/gnuplot";
+$mpiexec="/usr/local/bin/mpiexec";
+
+$url_dir="/mendel_user_data";
+
+$run_dir="/Library/WebServer/Documents$url_dir";
+$arch_dir="NA";
+$this_server="MacBook";
+$qstat_cmd="$qstat -a | grep hs84 | grep -v edu: |";
+$disk_usage_cmd=`df /dev/sda4 | awk '/sda4/ {print \$5}'`;     
+$ram_per_job=1000;
+$max_ram_per_node=1000;
+$time_to_delete="3 months";
+$max_tribes = 8;
+$procs_per_node = 8;
+$num_nodes = 1;

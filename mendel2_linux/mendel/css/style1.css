@@ -1,0 +1,83 @@
+:link { color: rgb(27, 7, 126) }  /* for unvisited links */
+:visited { color: rgb(0, 0, 7) } /* for visited links */
+/* :visited { color: rgb(0, 96, 255) }  for visited links */
+/* :active { color: rgb(255, 0, 102) }  when link is clicked */
+/* :hover { color: rgb(178, 0, 0) }  when mouse is over link */
+
+/* body { background: 000080 } */
+
+/* body,li,p,td { font-family: verdana, sans-serif; font-size: 10pt; text-decoration: none; } */
+
+body,li,p,td { font-family: serif; font-size: 12pt; text-decoration: none; }
+
+/* color: #333333; text-decoration: none; } */
+/* A { text-decoration: none; } */
+
+a.plain { text-decoration: none }
+/* This is <a class="plain" href="what.html">not underlined</a> */
+
+a.tmp {
+background-color: cccc66;
+}
+
+pre {font-family: monospace;}
+
+/* font sizes: xx-small, x-small, small, medium, large, x-large, xx-large */
+
+H1 {
+/*  align: center; */
+/*  font-variant: small-caps; */
+/*  font-family: sans-serif; */ 
+/*    font-size: 36pt; */
+    font-size: x-large;
+    font-family: serif }
+
+H2 {
+  font-family: sans-serif;
+  font-size: medium; }
+/* P { margin: 1em } */
+
+H3 {
+  font-family: sans-serif;
+  font-size: medium;
+  text-decoration: underline; }
+
+.scripture {
+  color: 000080;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin: 2em;
+  width: 450;
+}
+
+.center {
+  margin: 2em;
+}
+
+b.scripture {
+  color: 000080;
+  font-family: sans-serif;
+}
+
+blockquote.scripture {
+  color: 000080;
+  font-family: sans-serif;
+}
+
+.highlight {
+  color: ff0000;
+/*  background-color: %ffff66; */
+}
+
+.navbar {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: solid thin navy
+}
+
+.navbar IMG { float: right }
+
+/* to not print an object */
+@media print {
+  .navbar { display: none }
+}

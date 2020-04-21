@@ -1,0 +1,43 @@
+#!/usr/bin/perl
+
+################################################################
+# This is basically a data server which responds to the        #
+# AJAX calls made in monitor.cgi and feeds it data from        #
+# various files which Flot uses to plot the data in real-time. #
+################################################################
+
+require "parse.inc";
+require "config.inc";
+
+$case_id=$formdata{'case_id'};
+$user_id=$formdata{'user_id'};
+$plot=$formdata{'plot'};
+
+print "Content-type:text/plain\n\n";
+
+($col,$ext)=split('\.',$plot);
+#print "plot is $plot\n";
+#print "ext is $ext\n";
+#print "col is $col\n";
+
+print "{[";
+open(FH,"$run_dir/$user_id/$case_id/$case_id.000.$ext");
+while (<FH>) {
+     #($gen,$fitness,$fitness_sd,$num_dmutns,$num_fmutns) = split(' ', $_, 9999);
+     ($col1,$col2,$col3,$col4,$col5) = split(' ', $_, 9999);
+     #$fitness = sprintf("%f",$fitness);
+     if($col eq "fit") {
+        if ($col1%1==0 && $col1 ne "#") {print "[$col1, $col2], ";}
+     } elsif($col eq "dmutn") {
+        if ($col1%1==0 && $col1 ne "#") {print "[$col1, $col4], ";}
+     } elsif($col eq "fmutn") {
+        if ($col1%1==0 && $col1 ne "#") {print "[$col1, $col5], ";}
+     } elsif($col eq "thr") {
+	if ($col1 ne "#") {print "[$col1, $col2], ";}
+     } elsif($col eq "ddst") {
+	if ($col1 ne "#") {print "[$col1, $col3], ";}
+     }
+}
+close FH;
+print "null]};\n";
+

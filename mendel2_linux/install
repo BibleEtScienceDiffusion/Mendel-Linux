@@ -1,0 +1,105 @@
+#!/bin/bash
+
+version="2.0.2"
+
+. distro
+
+# Disable SELINUX
+#if grep -c SELINUX=enforcing /etc/selinux/config
+#if sestatus | grep -i selinux.status.*enabled
+if [ -e /selinux/enforce ] 
+then
+   if grep 1 /selinux/enforce > /dev/null
+   then
+      echo
+      echo "** FATAL INSTALL ERROR **"     
+      echo 
+      echo "SELINUX is enabled on your system.  SELINUX will"
+      echo "prevent Mendel from writing files to your system."
+      echo
+      echo "For Mendel to work, you will need to disable SELINUX"
+      echo "before installing Mendel. There are various ways"
+      echo "to disable SELINUX."
+      echo 
+      echo "For example, on a Redhat, Fedora, or CentOS system, you "
+      echo "can run the command \"system-config-selinux\""
+      echo "If you set \"Current Enforcing Mode\" to permissive,"
+      echo "This will allow you to temporarily disable SE Linux"
+      echo "until you reboot your system, thus allowing you to install MENDEL."
+      echo "However, if you want to continue to use MENDEL, you will"
+      echo "need to completely disable SELINUX, which will require a reboot."
+      echo
+      echo "To manually disable SELINUX, edit the"
+      echo "file /etc/selinux/config and change SELINUX=enforcing to"
+      echo "SELINUX=disabled.  After changing this file, you will need"
+      echo "to reboot your system."
+
+      exit
+      #cp /etc/selinux/config /etc/selinux/config.bak.mendel
+      #sed -i 's/=enforcing/=disabled/' /etc/selinux/config
+   fi 
+fi
+
+echo Installing HTML files to DOC_ROOT at: $DOC_ROOT
+echo Installing Perl and Fortran files to CGI_BIN at: $CGI_BIN
+echo
+echo Press enter to continue
+read option
+
+# Change to directory where user starts the install script
+#cd "$( dirname "${BASH_SOURCE[0]}" )"
+#
+#clear
+echo "INSTALLING MENDEL"
+echo 
+
+echo Unless you are running as root user, you will be asked for
+echo a password to proceed.  This is your normal user password.
+echo If you are not setup as a sudo user, then you will receive
+echo an error message.  In this case, you will need 
+echo "to first login as root to install Mendel, (e.g. su -)."
+
+# deal with already existing Mendel directory
+if [ -e "$DOC_ROOT/mendel" ] 
+then
+   sudo mv $DOC_ROOT/mendel $DOC_ROOT/mendel.bak
+   echo "Renamed $DOC_ROOT/mendel to mendel.bak"
+fi
+
+# copy files
+sudo cp -r mendel $DOC_ROOT
+sudo cp -r v$version $CGI_BIN
+sudo mkdir -p -m 777 $DOC_ROOT/mendel_user_data/gregor
+
+# specify amount of memory to allocate for running Mendel
+max_ram=`grep MemTotal /proc/meminfo | awk '{printf("%.0f",$2/1024)}'`
+echo
+echo You have $max_ram MB of RAM available on your system.
+echo The minimum requirement is 128GB.  If you don\'t know what to use
+echo just hit enter here and the default value will be used.  
+echo The default value of 256MB will allow running
+echo a variety of cases.  However, if you want to run larger populations,
+echo high mutations rates, or large number of linkage subunits, you 
+echo may need to increase this number to a larger amount.
+
+ram=256
+echo
+echo How much RAM in MegaBytes do you want to allow Mendel to use? [ $ram ]
+read mem
+if [ ! $mem ]; then
+   mem=$ram
+fi
+echo allocating $mem MB of RAM
+sudo sed -i -e 's/256/'$mem'/'      $CGI_BIN/v$version/config.inc
+
+# Set the correct $run_dir variable in config.inc
+sudo sed -i -e 's!XYZ!'$DOC_ROOT'!' $CGI_BIN/v$version/config.inc
+
+# Launch Mendel in default web browser
+echo point browser to http://localhost/mendel/v$version/index.html
+#if which xdg-open > /dev/null
+#then
+#   xdg-open http://localhost/mendel/v$version/index.html &
+#fi
+
+echo "Installation Finished"

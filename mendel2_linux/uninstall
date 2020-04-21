@@ -1,0 +1,51 @@
+#!/bin/bash
+
+version="2.0.2"
+
+# Require the following file only to get info where the 
+# files are installed which is based on which Linux distro
+# is being used.
+. distro
+
+clear
+echo "This script will uninstall Mendel from your computer"
+echo "and turn off your web server. " 
+echo
+echo "Press enter to continue, or Control+C to quit now."
+
+read option
+
+# Remove mendel files
+sudo rm -rf $DOC_ROOT/mendel 
+echo "removing $DOC_ROOT/mendel"
+sudo rm -rf $CGI_BIN/v$version
+echo "removing $CGI_BIN/v$version"
+# gfortran uses libquadmath 
+#sudo rm -rf /usr/local/lib/libquadmath.0.dylib
+#echo "removing /usr/local/lib/libquadmath.0.dylib"
+
+
+# Stop web server now (for Mac OS X)
+#sudo launchctl stop com.diymacserver.apache2
+#echo "launchctl stop com.diymacserver.apache2"
+
+# Remove Launch Daemon for web server
+#sudo launchctl unload /System/Library/LaunchDaemons/com.diymacserver.apache2.plist
+#echo "launchctl unload /System/Library/LaunchDaemons/com.diymacserver.apache2.plist"
+#sudo rm -rf /System/Library/LaunchDaemons/com.diymacserver.apache2.plist 
+#echo "removing /System/Library/LaunchDaemons/com.diymacserver.apache2.plist"
+
+echo 
+echo "Mendel run data was not deleted and is in the directory"
+echo "$DOC_ROOT/mendel_user_data"
+echo
+
+echo "NOTICE: If SELINUX was enabled on your system, it was disabled"
+echo "during the installation process."
+echo "If you want to re-enable, edit the file /etc/selinux/config"
+echo "and change the line \"SELINUX=disabled\" to \"SELINUX=enforcing\""
+
+echo
+echo "Finished uninstalling program."
+#read option
+
