@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
-#MENDELS ACCOUNTANT LINUX VERSION
+MENDELS ACCOUNTANT LINUX VERSION
 --------------------------------------------------------------------------
 
 To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
@@ -19,7 +19,7 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 5. Open browser to http://localhost:8580 to access Mendel's Accountant
 
 --------------------
-#MENDEL ON CHROMEBOOK
+MENDEL ON CHROMEBOOK
 --------------------
 
 The latest version of Mendel's Accountant can also run on a Google Chromebook.  To 
@@ -33,7 +33,7 @@ Then, enter "sudo enter-chroot".  Then enter commands 1-5 above at the command p
 to install and use Mendel's Accountant.
 
 -------
-#v2.0.2
+v2.0.2
 -------
 
 The LINUX version of Mendels Accountant has been tested on the following
@@ -56,7 +56,7 @@ Linux.  We are working to fix this and release an updated version ASAP.
 - The Mendels Accountant Development Team
 
 ---------------------------------------------------------------------------
-#INSTALLATION INSTRUCTIONS
+INSTALLATION INSTRUCTIONS
 ---------------------------------------------------------------------------
 
   1. Download the distribution
@@ -70,7 +70,7 @@ Linux.  We are working to fix this and release an updated version ASAP.
 > ./install
 
 ---------------------------------------------------------------------------
-#HOW TO START USING MENDELS ACCOUNTANT
+HOW TO START USING MENDELS ACCOUNTANT
 ---------------------------------------------------------------------------
 
   To start using Mendels Accountant, point your web browser to the 
@@ -79,7 +79,7 @@ Linux.  We are working to fix this and release an updated version ASAP.
      http://localhost/mendel/v2.0.2/index.html
 
 ---------------------------------------------------------------------------
-#ADDITIONAL NOTES
+ADDITIONAL NOTES
 ---------------------------------------------------------------------------
 
 1. During installation, this version will ask you how much memory
