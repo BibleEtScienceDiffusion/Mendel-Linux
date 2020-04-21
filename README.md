@@ -4,8 +4,8 @@ MENDELS ACCOUNTANT LINUX VERSION
 
 To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 
-1. install SPC
-> git clone https://github.com/whbrewer/spc.git && cd spc
+1. install  git and SPC
+> sudo apt-get install git;git clone https://github.com/whbrewer/spc.git && cd spc
 
 2. install python and virtualenv
 > sudo apt-get install python python-pip; sudo pip install virtualenv pathlib2
