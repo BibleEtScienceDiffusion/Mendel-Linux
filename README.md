@@ -7,16 +7,19 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 1. install SPC
 > git clone https://github.com/whbrewer/spc.git && cd spc
 
-2. create database and config file
+2. install virtualenv with pip3
+> sudo apt-get install python3-pip3 ; sudo pip3 install virtualenv
+
+3. create database and config file
 > ./spc init 
 
-3. install Mendel
+4. install Mendel
 > ./spc install https://github.com/whbrewer/fmendel-spc-linux/archive/master.zip
 
-4. start server (must always be running in order to use Mendel's Accountant)
+5. start server (must always be running in order to use Mendel's Accountant)
 > ./spc run 
 
-5. Open browser to http://localhost:8580 to access Mendel's Accountant
+6. Open browser to http://localhost:8580 to access Mendel's Accountant
 
 --------------------
 MENDEL ON CHROMEBOOK
