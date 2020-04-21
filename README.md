@@ -7,11 +7,11 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 1. install SPC
 > git clone https://github.com/whbrewer/spc.git && cd spc
 
-2. install python
+2. install python and virtualenv
 > sudo apt-get install python python-pip; sudo pip install virtualenv pathlib2
 
 3. create a new virtual environnement for spc
-> virtualenv -p /usr/lib/python2.7
+> virtualenv -p /usr/lib/python2.7 venv
 
 4. create database and config file
 > python ./spc init 
