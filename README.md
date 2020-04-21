@@ -63,11 +63,11 @@ Linux.  We are working to fix this and release an updated version ASAP.
 
   2. Unpack the distribution. For example:
 
-     tar xvfz mendel_v2.0.2_linux.tgz 
+> tar xvfz mendel_v2.0.2_linux.tgz 
 
   3. Run the install script:
  
-     ./install
+> ./install
 
 ---------------------------------------------------------------------------
 #HOW TO START USING MENDELS ACCOUNTANT
