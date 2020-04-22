@@ -15,9 +15,9 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 
 3. install others
 >  cd ./venv/bin;. activate
-> pip instal pytoml, psutil, cherrypy==3.2.2, wsgiserver;cd ../../
+> pip instal pytoml, psutil, cherrypy==3.2.2;cd ../../
 
-4. install Mendel (you don't have to run spc init)
+4. install Mendel
 > ./spc install https://github.com/whbrewer/fmendel-spc-linux/archive/master.zip
 
 5. start server (must always be running in order to use Mendel's Accountant)
