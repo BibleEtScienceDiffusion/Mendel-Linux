@@ -14,7 +14,7 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 > virtualenv -p /usr/bin/python2.7 venv; ./spc init
 
 3. install others
->  cd ./venv/bin;. activate
+>  cd ./venv/bin;. activate<br>
 >  pip instal pytoml, psutil, cherrypy==3.2.2;cd ../../
 
 4. install Mendel
