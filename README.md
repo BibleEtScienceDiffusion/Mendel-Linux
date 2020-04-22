@@ -23,7 +23,7 @@ To get the latest Linux version (v2.5), one can install SPC & MENDEL as follows:
 5. start server (must always be running in order to use Mendel's Accountant)
 > ./spc run 
 
-6. Open browser to [http://localhost:8580](localhost:8580) to access spc and active the application Mendel's Accountant.
+6. Open browser to [http://localhost:8580](https://localhost:8580) to access spc and active the application Mendel's Accountant.
 
 --------------------
 MENDEL ON CHROMEBOOK
